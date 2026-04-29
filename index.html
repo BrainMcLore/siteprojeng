@@ -47,7 +47,6 @@
       </video>
       <div class="hero-overlay"></div>
       <div class="hero-content reveal">
-        <p class="eyebrow">Interactive class project</p>
         <h1>English for IT</h1>
         <p class="hero-copy">
           A cyber-stream journey through computers, the way they work, their main components,
@@ -99,8 +98,16 @@
     <section class="section section--stream">
       <div class="stream-band">
         <div class="stream-band__inner">
-          <p class="stream-band__label">Glossary flow</p>
-          <div class="stream-band__track" id="terms-marquee" aria-label="Scrolling IT terms"></div>
+          <div class="stream-band__head">
+            <p class="stream-band__label">Glossary slider</p>
+            <div class="stream-band__controls">
+              <button class="slider-button" id="terms-prev" type="button" aria-label="Previous terms">&#8592;</button>
+              <button class="slider-button" id="terms-next" type="button" aria-label="Next terms">&#8594;</button>
+            </div>
+          </div>
+          <div class="stream-band__viewport" id="terms-viewport">
+            <div class="stream-band__track" id="terms-marquee" aria-label="IT terms slider"></div>
+          </div>
         </div>
       </div>
     </section>
