@@ -364,6 +364,13 @@ h3 { font-size: 1.35rem; }
   padding: 0.95rem 1.2rem 1.1rem;
 }
 
+.stream-band__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
 .stream-band__label {
   margin: 0;
   color: var(--muted);
@@ -372,12 +379,46 @@ h3 { font-size: 1.35rem; }
   text-transform: uppercase;
 }
 
+.stream-band__controls {
+  display: flex;
+  gap: 0.55rem;
+}
+
+.slider-button {
+  width: 40px;
+  height: 40px;
+  border: 1px solid rgba(128, 229, 215, 0.2);
+  border-radius: 999px;
+  background: rgba(8, 28, 33, 0.78);
+  color: var(--text);
+  cursor: pointer;
+  transition: transform 0.25s ease, border-color 0.25s ease, background 0.25s ease;
+}
+
+.slider-button:hover {
+  transform: translateY(-2px);
+  border-color: rgba(215, 240, 157, 0.35);
+  background: rgba(12, 35, 40, 0.9);
+}
+
+.stream-band__viewport {
+  overflow: hidden;
+  cursor: grab;
+}
+
 .stream-band__track {
   display: flex;
   gap: 1rem;
-  width: max-content;
+  width: 100%;
   padding: 0.1rem 0;
-  animation: marquee 24s linear infinite;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.stream-band__track::-webkit-scrollbar {
+  display: none;
 }
 
 .term-chip {
@@ -392,6 +433,8 @@ h3 { font-size: 1.35rem; }
   font-size: 0.92rem;
   font-weight: 600;
   white-space: nowrap;
+  flex: 0 0 auto;
+  scroll-snap-align: start;
 }
 
 .term-chip svg {
@@ -515,7 +558,7 @@ h3 { font-size: 1.35rem; }
 .chip-core span:nth-child(5) { left: 8px; top: 50%; transform: translateY(-50%); }
 
 .components-grid,
-.presentation-grid {
+presentation-grid {
   grid-template-columns: repeat(4, minmax(0, 1fr));
 }
 
@@ -671,11 +714,6 @@ h3 { font-size: 1.35rem; }
   transform: translateY(0);
 }
 
-@keyframes marquee {
-  from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
-}
-
 @keyframes spin {
   to { transform: rotate(360deg); }
 }
@@ -692,6 +730,10 @@ h3 { font-size: 1.35rem; }
   .media-card,
   .content-grid {
     grid-template-columns: 1fr;
+  }
+
+  .term-chip {
+    min-width: 240px;
   }
 }
 
@@ -731,6 +773,20 @@ h3 { font-size: 1.35rem; }
   .feature-panel__visual,
   .media-card__video {
     min-height: 240px;
+  }
+
+  .stream-band__head {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .slider-button {
+    width: 36px;
+    height: 36px;
+  }
+
+  .term-chip {
+    min-width: 82%;
   }
 
   h1 {
