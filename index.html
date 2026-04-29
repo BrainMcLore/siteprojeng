@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>English for IT</title>
+  <meta
+    name="description"
+    content="English for IT is an immersive cyber-stream website about computers, their work, components, and a glossary of key IT terms."
+  >
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="page-loader" aria-hidden="true">
+    <div class="page-loader__ring"></div>
+    <div class="page-loader__label">Booting the stream...</div>
+  </div>
+
+  <div class="noise"></div>
+  <canvas class="stream-canvas" id="stream-canvas" aria-hidden="true"></canvas>
+
+  <header class="site-header">
+    <a class="brand" href="#top">English for IT</a>
+    <nav class="main-nav">
+      <a href="#about">Computers</a>
+      <a href="#brain">Core</a>
+      <a href="#glossary">Glossary</a>
+      <a href="#presentation">Presentation</a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <video
+        class="hero-video"
+        autoplay
+        muted
+        loop
+        playsinline
+        preload="metadata"
+        poster="https://images.pexels.com/videos/32399073/free-video-32399073.jpg?auto=compress&cs=tinysrgb&fit=crop&h=1200&w=1600"
+      >
+        <source src="https://videos.pexels.com/video-files/32399073/13820343_3840_2160_30fps.mp4" type="video/mp4">
+      </video>
+      <div class="hero-overlay"></div>
+      <div class="hero-content reveal">
+        <p class="eyebrow">Interactive class project</p>
+        <h1>English for IT</h1>
+        <p class="hero-copy">
+          A cyber-stream journey through computers, the way they work, their main components,
+          and the most useful words every future IT student should know.
+        </p>
+        <div class="hero-actions">
+          <a class="button button--primary" href="#about">Enter the flow</a>
+          <a class="button button--ghost" href="#glossary">Open glossary</a>
+        </div>
+      </div>
+      <div class="hero-stats reveal">
+        <article>
+          <span>04</span>
+          <p>Core topics</p>
+        </article>
+        <article>
+          <span>24</span>
+          <p>IT terms</p>
+        </article>
+        <article>
+          <span>05-10</span>
+          <p>Minutes to present</p>
+        </article>
+      </div>
+      <div class="liquid-divider" aria-hidden="true"></div>
+    </section>
+
+    <section class="section intro" id="about">
+      <div class="section-heading reveal">
+        <p class="eyebrow">Section 1</p>
+        <h2>What are computers?</h2>
+      </div>
+      <div class="content-grid">
+        <article class="glass-card reveal tilt-card">
+          <p>
+            Computers are electronic machines that receive data, process instructions, and produce results.
+            They help people solve problems, store information, communicate, design products, and automate tasks.
+          </p>
+        </article>
+        <article class="glass-card reveal tilt-card">
+          <p>
+            In the IT world, computers are essential because they run software, connect networks,
+            manage databases, and support nearly every digital service we use every day.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section section--stream">
+      <div class="stream-band">
+        <div class="stream-band__inner">
+          <p class="stream-band__label">Glossary flow</p>
+          <div class="stream-band__track" id="terms-marquee" aria-label="Scrolling IT terms"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="work">
+      <div class="section-heading reveal">
+        <p class="eyebrow">Section 2</p>
+        <h2>How do they work?</h2>
+      </div>
+      <div class="timeline">
+        <article class="timeline-step reveal">
+          <span class="timeline-step__index">01</span>
+          <h3>Input</h3>
+          <p>Data enters the system through a keyboard, mouse, microphone, camera, or network.</p>
+        </article>
+        <article class="timeline-step reveal">
+          <span class="timeline-step__index">02</span>
+          <h3>Processing</h3>
+          <p>The CPU follows instructions from software and performs calculations and logical operations.</p>
+        </article>
+        <article class="timeline-step reveal">
+          <span class="timeline-step__index">03</span>
+          <h3>Storage</h3>
+          <p>RAM keeps active data ready for quick access, while SSDs or hard drives save files for later use.</p>
+        </article>
+        <article class="timeline-step reveal">
+          <span class="timeline-step__index">04</span>
+          <h3>Output</h3>
+          <p>The result appears on a screen, printer, speaker, or another connected device.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section section--featured" id="brain">
+      <div class="feature-panel reveal">
+        <div class="feature-panel__copy">
+          <p class="eyebrow">Section 3</p>
+          <h2>What is the most important part?</h2>
+          <p>
+            Many people call the CPU the most important part of a computer because it acts like the brain of the system.
+            It executes instructions, coordinates tasks, and helps all the other components work together.
+          </p>
+          <p>
+            However, a computer is strongest when its parts work as one system: the CPU, RAM, storage,
+            motherboard, power supply, cooling, and software all depend on each other.
+          </p>
+        </div>
+        <div class="feature-panel__visual tilt-card">
+          <div class="chip-core">
+            <div class="chip-core__center">CPU</div>
+            <span>RAM</span>
+            <span>GPU</span>
+            <span>SSD</span>
+            <span>I/O</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="components">
+      <div class="section-heading reveal">
+        <p class="eyebrow">Section 4</p>
+        <h2>What are the components?</h2>
+      </div>
+      <div class="components-grid">
+        <article class="component-card reveal tilt-card"><h3>CPU</h3><p>Processes instructions and manages operations.</p></article>
+        <article class="component-card reveal tilt-card"><h3>Motherboard</h3><p>Connects all hardware parts and allows communication.</p></article>
+        <article class="component-card reveal tilt-card"><h3>RAM</h3><p>Stores active data temporarily for fast performance.</p></article>
+        <article class="component-card reveal tilt-card"><h3>Storage</h3><p>Saves the operating system, programs, and user files.</p></article>
+        <article class="component-card reveal tilt-card"><h3>GPU</h3><p>Handles graphics, video, and visual processing.</p></article>
+        <article class="component-card reveal tilt-card"><h3>Power Supply</h3><p>Delivers electricity to every internal component.</p></article>
+        <article class="component-card reveal tilt-card"><h3>Cooling</h3><p>Controls temperature and protects hardware from overheating.</p></article>
+        <article class="component-card reveal tilt-card"><h3>Input / Output</h3><p>Lets users send commands and receive results.</p></article>
+      </div>
+    </section>
+
+    <section class="section glossary-section" id="glossary">
+      <div class="section-heading reveal">
+        <p class="eyebrow">Glossary</p>
+        <h2>24 IT terms with visual icons</h2>
+      </div>
+      <div class="glossary-grid" id="glossary-grid"></div>
+    </section>
+
+    <section class="section media-section">
+      <div class="media-card reveal">
+        <div class="media-card__copy">
+          <p class="eyebrow">Video mood</p>
+          <h2>Cyber stream motion</h2>
+          <p>
+            The visual direction uses a flowing neon data-stream aesthetic to connect language learning with
+            modern digital culture. The moving background makes the project feel more immersive and memorable.
+          </p>
+        </div>
+        <div class="media-card__video">
+          <video autoplay muted loop playsinline preload="metadata">
+            <source src="https://videos.pexels.com/video-files/32399073/13820343_3840_2160_30fps.mp4" type="video/mp4">
+          </video>
+        </div>
+      </div>
+    </section>
+
+    <section class="section presentation" id="presentation">
+      <div class="section-heading reveal">
+        <p class="eyebrow">Presentation guide</p>
+        <h2>5-10 minute class flow</h2>
+      </div>
+      <div class="presentation-grid">
+        <article class="presentation-card reveal"><span>01</span><h3>Start with the definition</h3><p>Explain what computers are and why they are important in everyday life and IT careers.</p></article>
+        <article class="presentation-card reveal"><span>02</span><h3>Show the system flow</h3><p>Describe the path from input to processing, storage, and output using the animated timeline.</p></article>
+        <article class="presentation-card reveal"><span>03</span><h3>Focus on the CPU</h3><p>Present the CPU as the brain of the computer while noting that every part is necessary.</p></article>
+        <article class="presentation-card reveal"><span>04</span><h3>Use the glossary</h3><p>Choose 6 to 8 terms to explain live, then invite classmates to identify the rest from the icons.</p></article>
+      </div>
+    </section>
+  </main>
+
+  <button class="scroll-top" id="scroll-top" aria-label="Scroll back to top">&#8593;</button>
+
+  <script src="script.js"></script>
+</body>
+</html>
