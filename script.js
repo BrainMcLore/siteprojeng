@@ -27,6 +27,9 @@ const glossaryTerms = [
 
 const glossaryGrid = document.getElementById("glossary-grid");
 const termsMarquee = document.getElementById("terms-marquee");
+const termsViewport = document.getElementById("terms-viewport");
+const termsPrevButton = document.getElementById("terms-prev");
+const termsNextButton = document.getElementById("terms-next");
 const scrollTopButton = document.getElementById("scroll-top");
 const canvas = document.getElementById("stream-canvas");
 const context = canvas.getContext("2d");
@@ -78,19 +81,81 @@ function populateGlossary() {
 }
 
 function populateMarquee() {
-  const markup = [...glossaryTerms, ...glossaryTerms]
+  const markup = glossaryTerms
     .map(
       ({ icon, short, term }) => `
-        <div class="term-chip" aria-hidden="true">
+        <article class="term-chip">
           ${renderIcon(icon)}
           <strong>${short}</strong>
           <span>${term}</span>
-        </div>
+        </article>
       `
     )
     .join("");
 
   termsMarquee.innerHTML = markup;
+}
+
+function setupTermsSlider() {
+  const getStep = () => {
+    const firstCard = termsMarquee.querySelector(".term-chip");
+    if (!firstCard) {
+      return 320;
+    }
+
+    const gap = Number.parseFloat(window.getComputedStyle(termsMarquee).columnGap || window.getComputedStyle(termsMarquee).gap || "16");
+    return firstCard.getBoundingClientRect().width + gap;
+  };
+
+  const moveSlider = (direction) => {
+    termsMarquee.scrollBy({
+      left: getStep() * direction,
+      behavior: "smooth"
+    });
+  };
+
+  termsPrevButton.addEventListener("click", () => moveSlider(-1));
+  termsNextButton.addEventListener("click", () => moveSlider(1));
+
+  let isDragging = false;
+  let startX = 0;
+  let startScrollLeft = 0;
+
+  const startDrag = (clientX) => {
+    isDragging = true;
+    startX = clientX;
+    startScrollLeft = termsMarquee.scrollLeft;
+    termsViewport.style.cursor = "grabbing";
+  };
+
+  const moveDrag = (clientX) => {
+    if (!isDragging) {
+      return;
+    }
+
+    const distance = clientX - startX;
+    termsMarquee.scrollLeft = startScrollLeft - distance;
+  };
+
+  const endDrag = () => {
+    isDragging = false;
+    termsViewport.style.cursor = "grab";
+  };
+
+  termsViewport.addEventListener("mousedown", (event) => startDrag(event.clientX));
+  window.addEventListener("mousemove", (event) => moveDrag(event.clientX));
+  window.addEventListener("mouseup", endDrag);
+  termsViewport.addEventListener("mouseleave", endDrag);
+
+  termsViewport.addEventListener("touchstart", (event) => {
+    startDrag(event.touches[0].clientX);
+  }, { passive: true });
+
+  termsViewport.addEventListener("touchmove", (event) => {
+    moveDrag(event.touches[0].clientX);
+  }, { passive: true });
+
+  termsViewport.addEventListener("touchend", endDrag, { passive: true });
 }
 
 function activateReveal() {
@@ -190,6 +255,7 @@ function finishLoading() {
 
 populateGlossary();
 populateMarquee();
+setupTermsSlider();
 activateReveal();
 setupTilt();
 setupScrollTop();
