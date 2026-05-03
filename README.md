@@ -28,4 +28,4 @@ This project is ready for GitHub Pages because it is a plain static website.
 
 - The project uses external Google Fonts and external video from Pexels.
 - Internet access is required for those remote assets to load.
-- Last GitHub Pages rebuild trigger: 2026-04-29 23:47 Europe/Lisbon.
+- Last GitHub Pages rebuild trigger: 2026-05-03 Europe/Lisbon.
